@@ -1,0 +1,93 @@
+/* Header styles */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Logo */
+.navbar-logo .logo {
+  height: 50px;
+}
+
+/* Buttons */
+.navbar-buttons .btn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+.navbar-buttons .login-btn {
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.navbar-buttons .login-btn:hover {
+  background-color: #f9f9f9;
+  border-color: #bbb;
+}
+
+.navbar-buttons .signup-btn {
+  background-color: #ff6a00;
+  color: white;
+  border: none;
+}
+
+.navbar-buttons .signup-btn:hover {
+  background-color: #e65b00;
+}
+
+/* Menu */
+.navbar-menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  text-decoration: none;
+  padding: 10px 15px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover {
+  color: #ff6a00;
+}
+
+.menu-item.active {
+  color: #ff6a00;
+  font-weight: bold;
+}

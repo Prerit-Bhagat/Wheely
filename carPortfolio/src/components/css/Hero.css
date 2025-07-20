@@ -1,0 +1,37 @@
+*{
+    margin: 0%;
+}
+.parent {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    height: 100vh; /* Full viewport height */
+    border: black solid;
+  }
+  
+  .leftchild {
+    flex: 1; /* Left section takes up one part of the space */
+    margin-right: 20px;
+  }
+  
+  .rightchild {
+    flex: 1; /* Right section takes up one part of the space */
+    background-color: #f5f5f5; /* Example background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc; /* Example border */
+  }
+  
+  h1 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+  }
+  

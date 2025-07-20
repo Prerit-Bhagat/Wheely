@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Inter:wght@190..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Optional global style */
+body {
+  font-family: "Inter", sans-serif;
+}

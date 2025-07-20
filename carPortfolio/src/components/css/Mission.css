@@ -1,0 +1,9 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+}
+.Lower{
+    display: flex;
+    flex-direction: column;
+    gap:5rem;
+}

@@ -1,0 +1,69 @@
+/* Whyus.css */
+
+/* Container style */
+.whyus-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Upper section */
+  .upper {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .upper p {
+    font-size: 1em;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  /* Lower section: Cards aligned horizontally */
+  .lower {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Space between cards */
+    width: 100%; /* Ensures cards take up the available horizontal space */
+    overflow-x: auto; /* Adds horizontal scroll if needed */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Card styles */
+  .whyus-card {
+    min-width: 300px; /* Ensures all cards have a fixed width */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0; /* Prevents cards from shrinking */
+  }
+  
+  .whyus-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .whyus-card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+  
+  .whyus-card h3 {
+    font-size: 1.2em;
+    color: #ff6a00;
+    margin: 10px 0;
+  }
+  
+  .whyus-card p {
+    font-size: 0.9em;
+    color: #666;
+  }
+  
