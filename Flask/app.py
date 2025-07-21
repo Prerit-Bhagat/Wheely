@@ -1,8 +1,11 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash , jsonify
 import joblib
 import pandas as pd
+from flask_cors import CORS
 
+# Initialize Flask app
 app = Flask(__name__, static_url_path='/static')
+CORS(app, origins=["http://localhost:5173"])
 app.config["SECRET_KEY"] = "secret_key"
 
 # Load the model pipeline
@@ -14,6 +17,7 @@ def Home():
     prediction = None  # Initialize variable to store the prediction result
     if request.method == "POST":
         try:
+            print('9999999999999999999999999',prediction)
             # Form data collection
             Manufacturer = request.form.get('manufacturer')
             car_model = request.form.get('model')
@@ -47,15 +51,15 @@ def Home():
             df = pd.DataFrame(d)
             # Predict using the pipeline model
             prediction = pipeline_model.predict(df)[0]
-
+            
         except Exception as e:
-            flash(f"Error occurred: {e}", "danger")
-            prediction=0
+            return jsonify({'error': str(e)}), 500
 
+    
     if prediction is None:
         prediction=0
     # prediction=0  
-    return render_template('index.html', prediction=prediction)
+    return jsonify({'prediction': prediction})
 
 
 if __name__ == '__main__':
