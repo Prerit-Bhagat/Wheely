@@ -1,125 +1,93 @@
 import express from "express";
-import { User } from "../models/usermodel.js";
+import { User } from "../models/models.js";
 
 import { signUpValidation } from "../middlewares/signup.validation.middleware.js";
 import { signInValidation } from "../middlewares/signin.validation.middleware.js";
 
-import { authMiddleware } from "../middlewares/auth.middleware.js";
-import { generateToken } from "./utils/generateToken.js";
+import { authMiddleware } from "../middlewares/authmiddleware.js";
+import { generateToken } from "../utils/generatetoken.js";
 
 const route = express.Router();
 
-//  Cookie options for localhost (secure: false, sameSite: "Lax")
+// Cookie Options
 const cookieOptions = {
   httpOnly: true,
-  secure: false, // Use false on localhost
-  sameSite: "Lax", // Use Lax for localhost dev
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  secure: false,
+  sameSite: "Lax",
+  maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 
-// SIGNUP ROUTE
-route.post("/signup", signUpValidation, async (req, res) => {
+// Signup
+route.post("/auth/signup", async (req, res) => {
   try {
-    const { username, fullName, email, password, phoneNumber } = req.body;
+    const { name, email, age } = req.body;
 
-    if (await User.findOne({ username })) {
-      return res.status(409).json({ message: "Username already taken" });
-    }
     if (await User.findOne({ email })) {
       return res.status(409).json({ message: "Email already taken" });
     }
-    if (await User.findOne({ phoneNumber })) {
-      return res.status(409).json({ message: "PhoneNumber already taken" });
-    }
 
-    const user = await User.create({
-      name,
-      email,
-      password,
-    });
+    const user = await User.create({ name, email, age });
+    const token = generateToken(user);
 
-    const createdUser = await User.findById(user._id).select(
-      "-password -name -phoneNumber"
-    );
-
-    if (!createdUser) {
-      return res.status(500).json({ message: "User registration failed" });
-    }
-
-    const token = generateToken(createdUser);
-
-    return res.status(200).cookie("token", token, cookieOptions).json({
-      message: "User created successfully",
-      user: createdUser,
-    });
+    return res
+      .status(200)
+      .cookie("token", token, cookieOptions)
+      .json({
+        message: "User created successfully",
+        user: { name: user.name, email: user.email, age: user.age },
+      });
   } catch (error) {
     console.log("Signup error:\n", error);
-    res.status(500).json({ error: error.name, message: "Error during signup" });
+    res.status(500).json({ message: "Error during signup" });
   }
 });
 
-// SIGNIN ROUTE
-route.post("/signin", signInValidation, async (req, res) => {
+// Login
+route.post("/auth/signin", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email } = req.body;
 
     const user = await User.findOne({ email });
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    const isCorrect = await user.isPasswordCorrect(password);
-    if (!isCorrect)
-      return res.status(401).json({ message: "Invalid credentials" });
-
-    const loggedInUser = await User.findById(user._id).select(
-      "-password -phoneNumber"
-    );
-    const token = generateToken(loggedInUser);
-
-    return res.status(200).cookie("token", token, cookieOptions).json({
-      message: "Login successful",
-      user: loggedInUser,
-    });
+    const token = generateToken(user);
+    return res
+      .status(200)
+      .cookie("token", token, cookieOptions)
+      .json({
+        message: "Login successful",
+        user: { name: user.name, email: user.email, age: user.age },
+      });
   } catch (error) {
     console.log("Signin error:", error);
-    res.status(500).json({ error: error.name, message: "Error during signin" });
+    res.status(500).json({ message: "Error during signin" });
   }
 });
 
-// LOGOUT ROUTE
-route.post("/logout", authMiddleware, (req, res) => {
+// Logout
+route.post("/auth/logout", authMiddleware, (req, res) => {
   return res.status(200).clearCookie("token", cookieOptions).json({
     message: "User logged out successfully",
   });
 });
 
-//  CHECK LOGIN ROUTE
-route.get("/checkLogin", authMiddleware, (req, res) => {
-  // console.log("working");
+// Check Login
+route.get("/auth/checkLogin", authMiddleware, (req, res) => {
   return res.status(200).json({ message: "User is already logged in" });
 });
 
-// GET USER NAME
-route.get("/name", authMiddleware, async (req, res) => {
-  const name = await User.findOne({ email: req.body.email }).select(
-    "fullName -_id"
-  );
-  return res.status(200).json({ fullName: name });
+// Get User Details
+route.get("/auth/details", authMiddleware, async (req, res) => {
+  const user = await User.findOne({ email: req.user.email }).select("-_id");
+  if (!user) return res.status(404).json({ message: "User not found" });
+
+  return res.status(200).json({ user });
 });
 
-// GET USER DETAILS
-route.get("/details", authMiddleware, async (req, res) => {
-  const details = await User.findOne({ email: req.body.email }).select(
-    "-password -_id"
-  );
-  return res.status(200).json({ details });
-});
-
-// GLOBAL ERROR HANDLER
+// Global Error Handler
 route.use((err, req, res, next) => {
   console.log("Inside global error handler:", err);
-  return res.status(500).json({
-    message: "Internal Server Error",
-  });
+  return res.status(500).json({ message: "Internal Server Error" });
 });
 
 export default route;

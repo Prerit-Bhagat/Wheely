@@ -13,7 +13,9 @@
     "content-disposition": "^1.0.0",
     "content-type": "^1.0.5",
     "cookie": "^0.7.2",
+    "cookie-parser": "^1.4.7",
     "cookie-signature": "^1.2.2",
+    "cors": "^2.8.5",
     "debug": "^4.4.1",
     "depd": "^2.0.0",
     "dunder-proto": "^1.0.1",
@@ -39,6 +41,7 @@
     "inherits": "^2.0.4",
     "ipaddr.js": "^1.9.1",
     "is-promise": "^4.0.0",
+    "jsonwebtoken": "^9.0.2",
     "kareem": "^2.6.3",
     "math-intrinsics": "^1.1.0",
     "media-typer": "^1.1.0",
@@ -83,7 +86,8 @@
     "vary": "^1.1.2",
     "webidl-conversions": "^7.0.0",
     "whatwg-url": "^14.2.0",
-    "wrappy": "^1.0.2"
+    "wrappy": "^1.0.2",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

@@ -5,6 +5,7 @@ const JWT_EXPIRY = "7d";
 
 const generateToken = (user) => {
   console.log("Generating token for user:", user);
+  // console.log(user);
   const token = jwt.sign(
     {
       email: user.email,
