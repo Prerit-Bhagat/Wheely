@@ -9,7 +9,7 @@ CORS(app, origins=["http://localhost:5173"])
 app.config["SECRET_KEY"] = "secret_key"
 
 # Load the model pipeline
-pipeline_model = joblib.load("final_pipeline.joblib")
+pipeline_model = joblib.load("Pipeline.joblib")
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -17,7 +17,7 @@ def Home():
     prediction = None  # Initialize variable to store the prediction result
     if request.method == "POST":
         try:
-            print('9999999999999999999999999',prediction)
+            
             # Form data collection
             Manufacturer = request.form.get('manufacturer')
             car_model = request.form.get('model')
