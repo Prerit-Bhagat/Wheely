@@ -7,10 +7,17 @@ const About = () => {
       <div className="Mid-container">
         <p className="Who">Who we are</p>
         <p className="Info">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora
-          fugiat animi ipsa aliquid dicta praesentium aliquam odio quos nobis
-          iure magni hic vitae, velit quisquam. Sit rerum nesciunt dolores magni
-          iure, optio, id eaque nulla et minima laudantium aliquid! Animi.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
+          nostrum magni repellendus modi quaerat dolor, eaque veniam animi odio
+          reiciendis perferendis facilis quae, explicabo sequi quis ratione quam
+          in amet mollitia possimus. Corporis, repellat! Officia quod, error,
+          nemo animi sequi unde architecto eaque maxime ea molestias quia dolore
+          rerum tenetur asperiores nam suscipit natus ad magni, deserunt
+          pariatur corporis mollitia? Totam iure dolor sit dolores? Quisquam
+          distinctio harum, commodi nihil odit explicabo qui quaerat quos
+          accusantium ab eaque architecto quibusdam molestias necessitatibus?
+          Provident temporibus beatae unde adipisci id sequi inventore, quidem a
+          voluptatum doloribus facilis quos enim omnis eveniet voluptatibus?
         </p>
       </div>
       <div className="Last-container">

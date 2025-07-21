@@ -1,12 +1,24 @@
-import React from 'react';
-import Whyuscard from './Whyuscard'; // Importing the Whyuscard component
-import '../css/whyus.css'; // Importing the CSS file
+import React from "react";
+import Whyuscard from "./Whyuscard"; // Importing the Whyuscard component
+import "../css/whyus.css"; // Importing the CSS file
 
 // Data for the cards
 const Pictures = [
-  { url: "/image-1.jpg", title: "Financing Options", description: "Flexible financing options to suit your needs." },
-  { url: "/image-2.jpg", title: "Satisfied Customers", description: "Thousands of happy customers trust us." },
-  { url: "/image-3.jpg", title: "Fast & Easy Booking", description: "Quick and hassle-free booking process." },
+  {
+    url: "/image-1.jpg",
+    title: "Financing Options",
+    description: "Flexible financing options to suit your needs.",
+  },
+  {
+    url: "/image-2.jpg",
+    title: "Satisfied Customers",
+    description: "Thousands of happy customers trust us.",
+  },
+  {
+    url: "/image-3.jpg",
+    title: "Fast & Easy Booking",
+    description: "Quick and hassle-free booking process.",
+  },
 ];
 
 const Whyus = () => {
@@ -20,7 +32,7 @@ const Whyus = () => {
           praesentium magni hic distinctio eius.
         </p>
       </div>
-      
+
       {/* Lower Section */}
       <div className="lower">
         {Pictures.map((picture, index) => (
