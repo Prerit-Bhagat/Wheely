@@ -1,6 +1,6 @@
 import React from "react";
 import Whyuscard from "./Whyuscard"; // Importing the Whyuscard component
-import "@/components/css/whyus.css"; // Importing the CSS file
+import "@/components/css/Whyus.css"; // Importing the CSS file
 
 // Data for the cards
 const Pictures = [
