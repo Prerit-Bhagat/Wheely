@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 import { authMiddleware } from "../middlewares/authmiddleware.js";
-import { generateToken } from "../utils/generatetoken.js";
+import { generateToken } from "./generatetoken.js";
 
 const route = express.Router();
 

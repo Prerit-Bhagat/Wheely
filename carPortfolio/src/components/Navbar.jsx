@@ -83,12 +83,19 @@ export default function Header() {
         await axios.get("http://localhost:4000/auth/checkLogin", {
           withCredentials: true,
         });
+        localStorage.setItem("isLoggedIn", "true");
         setIsLoggedIn(true);
       } catch (error) {
+        localStorage.setItem("isLoggedIn", "false");
         setIsLoggedIn(false);
       }
     };
-    checkLogin();
+    const savedLoginStatus = localStorage.getItem("isLoggedIn");
+    if (savedLoginStatus === "true") {
+      setIsLoggedIn(true);
+    } else {
+      checkLogin();
+    }
   }, []);
 
   // Logout handler
@@ -99,6 +106,7 @@ export default function Header() {
         {},
         { withCredentials: true }
       );
+      localStorage.removeItem("isLoggedIn");
       setIsLoggedIn(false);
       navigate("/");
     } catch (error) {
