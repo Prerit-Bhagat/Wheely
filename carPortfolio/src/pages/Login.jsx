@@ -1,9 +1,7 @@
-
-import Forms from "../components/Login/Forms"
-
+import Forms from "@/components/Login/Forms";
 
 function Login() {
-    return <Forms route="/login/" method="login" />
+  return <Forms route="/login/" method="login" />;
 }
 
-export default Login
+export default Login;
