@@ -69,7 +69,7 @@
 // }
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import "./css/navbar.css"; // Importing the CSS file
+import "./Navbar.css"; // Importing the CSS file
 import axios from "axios";
 
 export default function Header() {
@@ -114,7 +114,7 @@ export default function Header() {
             <img src="./Logo.svg" className="logo" alt="Logo" />
           </Link>
 
-          {/* ✅ Auth buttons */}
+          {}
           <div className="navbar-buttons">
             {isLoggedIn ? (
               <button className="btn logout-btn" onClick={handleLogout}>
