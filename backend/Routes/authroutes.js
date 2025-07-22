@@ -1,9 +1,6 @@
 import express from "express";
 import { User } from "../models/models.js";
 
-import { signUpValidation } from "../middlewares/signup.validation.middleware.js";
-import { signInValidation } from "../middlewares/signin.validation.middleware.js";
-
 import { authMiddleware } from "../middlewares/authmiddleware.js";
 import { generateToken } from "../utils/generatetoken.js";
 
