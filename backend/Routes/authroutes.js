@@ -1,6 +1,8 @@
 import express from "express";
 import { User } from "../models/models.js";
+import dotenv from "dotenv";
 
+dotenv.config();
 import { authMiddleware } from "../middlewares/authmiddleware.js";
 import { generateToken } from "../utils/generatetoken.js";
 
@@ -9,21 +11,22 @@ const route = express.Router();
 // Cookie Options
 const cookieOptions = {
   httpOnly: true,
-  secure: false,
-  sameSite: "Lax",
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+  // LAx for testing
   maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 
 // Signup
 route.post("/auth/signup", async (req, res) => {
   try {
-    const { name, email, age } = req.body;
+    const { name, email, password } = req.body;
 
     if (await User.findOne({ email })) {
       return res.status(409).json({ message: "Email already taken" });
     }
 
-    const user = await User.create({ name, email, age });
+    const user = await User.create({ name, email, password });
     const token = generateToken(user);
 
     return res
@@ -31,7 +34,7 @@ route.post("/auth/signup", async (req, res) => {
       .cookie("token", token, cookieOptions)
       .json({
         message: "User created successfully",
-        user: { name: user.name, email: user.email, age: user.age },
+        user: { name: user.name, email: user.email, password: user.password },
       });
   } catch (error) {
     console.log("Signup error:\n", error);
@@ -42,18 +45,23 @@ route.post("/auth/signup", async (req, res) => {
 // Login
 route.post("/auth/signin", async (req, res) => {
   try {
-    const { email } = req.body;
+    const { email, password } = req.body;
 
     const user = await User.findOne({ email });
     if (!user) return res.status(404).json({ message: "User not found" });
-
+    console.log("Signin request:", req.body);
+    if (password !== user.password) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+    console.log("asas ", req.body);
     const token = generateToken(user);
+    console.log("Signin request:", req.body);
     return res
       .status(200)
       .cookie("token", token, cookieOptions)
       .json({
         message: "Login successful",
-        user: { name: user.name, email: user.email, age: user.age },
+        user: { email: user.email, password: user.password },
       });
   } catch (error) {
     console.log("Signin error:", error);

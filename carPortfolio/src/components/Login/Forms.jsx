@@ -26,14 +26,14 @@ const Forms = ({ method }) => {
     const testUser = {
       name: data.name,
       email: data.email,
-      age: data.age,
+      password: data.password,
     };
 
     try {
       if (method === "login") {
         const res = await axios.post(
           LOGIN_URL,
-          { email: data.email },
+          { email: data.email, password: data.password },
           { withCredentials: true }
         );
         toast.success("Logged in successfully!");
@@ -62,13 +62,6 @@ const Forms = ({ method }) => {
               placeholder="Name"
             />
             {errors.name && <p>{errors.name.message}</p>}
-
-            <input
-              type="number"
-              {...register("age", { required: "Age is required", min: 1 })}
-              placeholder="Age"
-            />
-            {errors.age && <p>{errors.age.message}</p>}
           </>
         )}
 
@@ -81,7 +74,12 @@ const Forms = ({ method }) => {
           placeholder="Email"
         />
         {errors.email && <p>{errors.email.message}</p>}
-
+        <input
+          type="password"
+          {...register("password", { required: "password is required" })}
+          placeholder="password"
+        />
+        {errors.password && <p>{errors.password.message}</p>}
         <input
           type="submit"
           disabled={loading}

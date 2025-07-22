@@ -1,7 +1,12 @@
 // db.js
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const MONGODB_CONNECTION_URL = "mongodb://localhost:27017";
+// Load environment variables
+dotenv.config();
+
+const MONGODB_CONNECTION_URL =
+  process.env.MONGODB_CONNECTION_URL || "mongodb://localhost:27017";
 const DB_NAME = "CaerWebsite";
 
 const ConnectDb = async () => {
