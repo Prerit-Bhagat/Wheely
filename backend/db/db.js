@@ -5,18 +5,15 @@ import dotenv from "dotenv";
 // Load environment variables
 dotenv.config();
 
-const MONGODB_CONNECTION_URL =
-  process.env.MONGODB_CONNECTION_URL || "mongodb://localhost:27017";
-const DB_NAME = "CaerWebsite";
+const MONGODB_URI = process.env.MONGO_URI;
 
 const ConnectDb = async () => {
   try {
-    await mongoose.connect(`${MONGODB_CONNECTION_URL}/${DB_NAME}`, {
+    await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-
-    console.log("MongoDB Connected!");
+    console.log("MongoDB Connected Successfully!");
   } catch (err) {
     console.error("MongoDB Connection Error:", err);
     process.exit(1);
