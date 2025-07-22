@@ -69,7 +69,7 @@
 // }
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import "./Navbar.css"; // Importing the CSS file
+import "@/components/Navbar.css"; // Importing the CSS file
 import axios from "axios";
 
 export default function Header() {

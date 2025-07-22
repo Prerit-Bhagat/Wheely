@@ -1,5 +1,5 @@
-import React from 'react'
-import '../css/Featured.css'
+import React from "react";
+import "@/components/css//Featured.css";
 import ImageSlider from "./Features.jsx";
 const Featured = () => {
   const slides = [
@@ -9,7 +9,7 @@ const Featured = () => {
     { url: "/image-4.jpg", title: "city" },
     { url: "/image-5.jpg", title: "italy" },
   ];
-  
+
   const containerStyles = {
     width: "500px",
     height: "280px",
@@ -25,4 +25,4 @@ const Featured = () => {
   );
 };
 
-export default Featured
+export default Featured;

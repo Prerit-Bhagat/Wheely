@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
-import "../css/Forms.css";
+import "@/components/css/Forms.css";
 
 const Forms = ({ method }) => {
   const [loading, setLoading] = useState(false);
