@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/auth/checkLogin", {
+      .get(process.env.VITE_API_URL + "/auth/checkLogin", {
         withCredentials: true,
       })
       .then(() => {

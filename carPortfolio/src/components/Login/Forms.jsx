@@ -17,7 +17,7 @@ const Forms = ({ method }) => {
     formState: { errors },
   } = useForm();
 
-  const API_BASE_URL = "http://localhost:4000";
+  const API_BASE_URL = process.env.VITE_API_URL || "http://localhost:4000";
   const REGISTER_URL = `${API_BASE_URL}/auth/signup`;
   const LOGIN_URL = `${API_BASE_URL}/auth/signin`;
 
