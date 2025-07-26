@@ -1,18 +1,14 @@
-// db.js
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-// Load environment variables
 dotenv.config();
 
-const MONGODB_CONNECTION_URL = process.env.MONGODB_CONNECTION_URL;
+const MONGO_URI = process.env.MONGO_URI;
 const DB_NAME = "CarWebsite";
 
 const ConnectDb = async () => {
   try {
-    await mongoose.connect(MONGODB_CONNECTION_URL, {
-      // useNewUrlParser: true,
-      // useUnifiedTopology: true,
+    await mongoose.connect(MONGO_URI, {
       dbName: DB_NAME,
     });
 
