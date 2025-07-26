@@ -41,6 +41,7 @@ const Services = () => {
       alert("Failed to get prediction. Please try again.");
     }
   }
+
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit(onSubmit)}>
