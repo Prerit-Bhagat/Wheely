@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 # Initialize Flask app
 app = Flask(__name__, static_url_path='/static')
-CORS(app, origins=["http://localhost:5173"])
+CORS(app, origins=["*"], supports_credentials=True)
 app.config["SECRET_KEY"] = "secret_key"
 
 # Load the model pipeline

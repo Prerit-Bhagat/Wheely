@@ -11,6 +11,8 @@ const DB_NAME = "CarWebsite";
 const ConnectDb = async () => {
   try {
     await mongoose.connect(`${MONGODB_CONNECTION_URL}/${DB_NAME}`, {
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
       dbName: DB_NAME,
     });
 
