@@ -97,7 +97,7 @@ export default function Header() {
     } else {
       checkLogin();
     }
-  }, []);
+  }, [isLoggedIn]);
 
   // Logout handler
   const handleLogout = async () => {
