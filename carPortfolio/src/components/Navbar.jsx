@@ -104,7 +104,7 @@ export default function Header() {
   const handleLogout = async () => {
     try {
       await axios.post(
-        `${VITE_API_URL}/auth/logout  `,
+        `${VITE_API_URL}/auth/logout`,
         {},
         { withCredentials: true }
       );

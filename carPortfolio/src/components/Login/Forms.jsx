@@ -38,6 +38,7 @@ const Forms = ({ method }) => {
         );
         toast.success("Logged in successfully!");
         navigate("/");
+        window.reload();
       } else {
         await axios.post(REGISTER_URL, testUser, { withCredentials: true });
         toast.success("Account created! Redirecting to login…");
