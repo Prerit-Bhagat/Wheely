@@ -86,6 +86,7 @@ export default function Header() {
         });
         localStorage.setItem("isLoggedIn", "true");
         setIsLoggedIn(true);
+        navigate("/");
       } catch (error) {
         localStorage.setItem("isLoggedIn", "false");
         setIsLoggedIn(false);
