@@ -67,53 +67,18 @@
 //         </header>
 //     );
 // }
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import "@/components/Navbar.css"; // Importing the CSS file
-import axios from "axios";
+import "@/components/Navbar.css";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
-  const VITE_API_URL = import.meta.env.VITE_API_URL;
 
-  // Check login status from backend on mount
-  useEffect(() => {
-    const checkLogin = async () => {
-      try {
-        await axios.get(`${VITE_API_URL}/auth/checkLogin`, {
-          withCredentials: true,
-        });
-        localStorage.setItem("isLoggedIn", "true");
-        setIsLoggedIn(true);
-        navigate("/");
-      } catch (error) {
-        localStorage.setItem("isLoggedIn", "false");
-        setIsLoggedIn(false);
-      }
-    };
-    const savedLoginStatus = localStorage.getItem("isLoggedIn");
-    if (savedLoginStatus === "true") {
-      setIsLoggedIn(true);
-    } else {
-      checkLogin();
-    }
-  }, [isLoggedIn]);
-
-  // Logout handler
   const handleLogout = async () => {
-    try {
-      await axios.post(
-        `${VITE_API_URL}/auth/logout`,
-        {},
-        { withCredentials: true }
-      );
-      localStorage.removeItem("isLoggedIn");
-      setIsLoggedIn(false);
-      navigate("/");
-    } catch (error) {
-      console.error("Logout failed", error);
-    }
+    await logout();
+    navigate("/");
   };
 
   return (
@@ -124,7 +89,6 @@ export default function Header() {
             <img src="./Logo.svg" className="logo" alt="Logo" />
           </Link>
 
-          {}
           <div className="navbar-buttons">
             {isLoggedIn ? (
               <button className="btn logout-btn" onClick={handleLogout}>
@@ -142,7 +106,6 @@ export default function Header() {
             )}
           </div>
 
-          {/* Navigation menu */}
           <div className="navbar-menu">
             <ul className="menu-list">
               <li>
@@ -177,7 +140,7 @@ export default function Header() {
               </li>
               <li>
                 <NavLink
-                  to="/News"
+                  to="/news"
                   className={({ isActive }) =>
                     `menu-item ${isActive ? "active" : ""}`
                   }
