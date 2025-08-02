@@ -5,11 +5,11 @@ import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ children }) => {
   const [isAuth, setIsAuth] = useState(null);
   const [loading, setLoading] = useState(true);
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+  const VITE_API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/auth/checkLogin`, { withCredentials: true })
+      .get(`${VITE_API_URL}/auth/checkLogin`, { withCredentials: true })
       .then(() => {
         setIsAuth(true);
         setLoading(false);

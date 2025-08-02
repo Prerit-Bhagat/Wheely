@@ -17,9 +17,9 @@ const Forms = ({ method }) => {
     formState: { errors },
   } = useForm();
 
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
-  const REGISTER_URL = `${API_BASE_URL}/auth/signup`;
-  const LOGIN_URL = `${API_BASE_URL}/auth/signin`;
+  const VITE_API_URL = import.meta.env.VITE_API_URL;
+  const REGISTER_URL = `${VITE_API_URL}/auth/signup`;
+  const LOGIN_URL = `${VITE_API_URL}/auth/signin`;
 
   const handleSubmitForm = async (data) => {
     setLoading(true);

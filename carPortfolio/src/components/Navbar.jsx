@@ -75,12 +75,13 @@ import axios from "axios";
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const VITE_API_URL = import.meta.env.VITE_API_URL;
 
   // Check login status from backend on mount
   useEffect(() => {
     const checkLogin = async () => {
       try {
-        await axios.get("http://localhost:4000/auth/checkLogin", {
+        await axios.get(`${VITE_API_URL}/auth/checkLogin`, {
           withCredentials: true,
         });
         localStorage.setItem("isLoggedIn", "true");
@@ -102,7 +103,7 @@ export default function Header() {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:4000/auth/logout",
+        `${VITE_API_URL}/auth/logout  `,
         {},
         { withCredentials: true }
       );
