@@ -70,7 +70,7 @@
 import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "@/components/Navbar.css";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/AuthContext.jsx";
 
 export default function Header() {
   const { isLoggedIn, logout } = useAuth();
