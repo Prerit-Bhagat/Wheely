@@ -112,7 +112,7 @@ const Forms = ({ method }) => {
     reset,
   } = useForm();
 
-  const API_URL = import.meta.env.VITE_API_URL; // Use VITE_ prefix in React (Vite)
+  const API_URL = import.meta.env.VITE_API_URL;
   const REGISTER_URL = `${API_URL}/auth/signup`;
   const LOGIN_URL = `${API_URL}/auth/signin`;
 
@@ -139,7 +139,7 @@ const Forms = ({ method }) => {
         };
         await axios.post(REGISTER_URL, testUser, { withCredentials: true });
         toast.success("Account created! Redirecting to login…");
-        router.push("/login");
+        navigate("/login");
       }
       reset();
     } catch (error) {
