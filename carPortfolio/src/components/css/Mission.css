@@ -1,9 +1,106 @@
-.main-container{
-    display: flex;
-    flex-direction: column;
+/* Global box-sizing for consistency within this component */
+.mission-container * {
+  box-sizing: border-box;
 }
-.Lower{
-    display: flex;
-    flex-direction: column;
-    gap:5rem;
+
+/* Main container for the Mission section */
+.mission-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  padding: 60px 20px; /* Generous padding top/bottom */
+  background-color: #f0f2f5; /* Light background for contrast */
+  font-family: Arial, sans-serif;
+  color: #333;
+  text-align: center; /* Default text alignment for the section */
+}
+
+/* Upper section: "OUR MISSION" heading */
+.upper {
+  margin-bottom: 40px; /* Space below the heading */
+  width: 100%;
+  max-width: 800px; /* Limit width for readability */
+}
+
+.upper h2 {
+  /* Styling for the mission heading */
+  font-size: 3rem; /* Large, impactful heading */
+  font-weight: bold;
+  color: #2c3e50; /* Darker color for emphasis */
+  text-transform: uppercase; /* Uppercase as in your component */
+  letter-spacing: 2px;
+  margin: 0; /* Remove default margin */
+}
+
+/* Lower section: Paragraphs */
+.Lower {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Space between paragraphs */
+  width: 100%;
+  max-width: 900px; /* Max width for the paragraph block */
+  text-align: left; /* Align paragraphs to the left */
+}
+
+.Lower p {
+  font-size: 1.1rem; /* Standard paragraph font size */
+  line-height: 1.7; /* Good line height for readability */
+  color: #555;
+}
+
+/* Specific paragraph styling (if needed, otherwise .Lower p applies) */
+.firstpara {
+  /* Example: maybe a slightly different color or font-weight */
+  /* font-weight: bold; */
+}
+
+.secondpara {
+  /* Example: maybe a slightly larger margin-bottom */
+  /* margin-bottom: 30px; */
+}
+
+.thirdpara {
+  /* Example: maybe italic */
+  /* font-style: italic; */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mission-container {
+    padding: 40px 15px;
+  }
+
+  .upper h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+
+  .Lower {
+    gap: 20px;
+  }
+
+  .Lower p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-container {
+    padding: 30px 10px;
+  }
+
+  .upper h2 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .Lower {
+    gap: 15px;
+  }
+
+  .Lower p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
 }

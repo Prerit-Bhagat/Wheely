@@ -1,0 +1,146 @@
+/* Global box-sizing for consistency within this component */
+.car-news-container * {
+  box-sizing: border-box;
+}
+
+/* Main container for the Car News section */
+.car-news-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f8f9fa; /* Light background */
+  text-align: center;
+}
+
+.car-news-title {
+  font-size: 2.8rem;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+/* Loading, Error, No News Messages */
+.loading-message,
+.error-message,
+.no-news-message {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 30px;
+}
+
+.error-message {
+  color: #dc3545; /* Red for errors */
+}
+
+/* News Grid Layout */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Responsive grid */
+  gap: 30px; /* Space between cards */
+  justify-content: center; /* Center grid items */
+}
+
+/* Individual News Card */
+.news-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures image corners are rounded */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left; /* Align text within card to left */
+}
+
+.news-card:hover {
+  transform: translateY(-8px); /* Lift effect on hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.news-card-image {
+  width: 100%;
+  height: 200px; /* Fixed height for images */
+  object-fit: cover; /* Cover the area, crop if necessary */
+  border-bottom: 1px solid #eee;
+}
+
+.news-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow content to take available space */
+}
+
+.news-card-title {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.news-card-title a {
+  color: #007bff; /* Blue link color */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.news-card-title a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+.news-card-source {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.news-card-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  flex-grow: 1; /* Allow description to take available space */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .car-news-container {
+    padding: 40px 15px;
+  }
+  .car-news-title {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+  .news-grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+    gap: 20px;
+  }
+  .news-card-image {
+    height: 180px;
+  }
+  .news-card-title {
+    font-size: 1.2rem;
+  }
+  .news-card-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .car-news-container {
+    padding: 30px 10px;
+  }
+  .car-news-title {
+    font-size: 1.8rem;
+  }
+  .news-card-image {
+    height: 150px;
+  }
+  .news-card-content {
+    padding: 15px;
+  }
+}

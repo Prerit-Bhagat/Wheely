@@ -1,0 +1,135 @@
+/* Global box-sizing for consistency */
+.services-form-container * {
+  box-sizing: border-box;
+}
+
+/* Main container for the form */
+.services-form-container {
+  max-width: 600px; /* Increased max-width for better form layout */
+  margin: 50px auto;
+  padding: 30px; /* Increased padding */
+  border: 1px solid #e0e0e0; /* Lighter border */
+  border-radius: 10px; /* More rounded corners */
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Softer, more prominent shadow */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  color: #333;
+}
+
+.services-form-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap between form groups */
+}
+
+/* Form group for labels and inputs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label styling */
+label {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+}
+
+/* Input and select field styling */
+input[type="text"],
+input[type="number"],
+select {
+  padding: 12px 15px; /* More padding */
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Slightly more rounded */
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Ensure full width */
+  background-color: #fdfdfd;
+}
+
+/* Focus effect on input/select fields */
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Subtle glow effect */
+}
+
+/* Submit button styling */
+.submit-button {
+  /* Changed to class for consistency */
+  background-color: #007bff;
+  color: white;
+  font-size: 1.1rem; /* Slightly larger font */
+  font-weight: bold;
+  padding: 12px 20px; /* More padding */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px; /* Space above button */
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.submit-button:active {
+  transform: translateY(0); /* Press effect */
+}
+
+/* Error message styling */
+.error-message {
+  /* Changed to class for consistency */
+  color: #dc3545; /* Bootstrap red for errors */
+  font-size: 0.9rem;
+  margin-top: 5px; /* Space below input */
+  text-align: left; /* Align error message with input */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .services-form-container {
+    margin: 30px 15px;
+    padding: 25px;
+  }
+  .services-form-container h2 {
+    font-size: 1.8rem;
+  }
+  input[type="text"],
+  input[type="number"],
+  select,
+  .submit-button {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+  .error-message {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-form-container {
+    margin: 20px 10px;
+    padding: 20px;
+  }
+  .services-form-container h2 {
+    font-size: 1.5rem;
+  }
+  form {
+    gap: 15px;
+  }
+}

@@ -1,3 +1,8 @@
+/* Global box-sizing for consistency */
+* {
+  box-sizing: border-box;
+}
+
 /* Header styles */
 .header {
   position: sticky;
@@ -5,6 +10,7 @@
   z-index: 50;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
+  width: 100%; /* Ensure header spans full width */
 }
 
 /* Navbar styles */
@@ -13,8 +19,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px; /* Max width for content inside navbar */
+  margin: 0 auto; /* Center the navbar content */
 }
 
 .navbar-container {
@@ -27,17 +33,25 @@
 /* Logo */
 .navbar-logo .logo {
   height: 50px;
+  width: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
 }
 
 /* Buttons */
+.navbar-buttons {
+  display: flex; /* Ensure buttons are in a row */
+  align-items: center;
+}
+
 .navbar-buttons .btn {
   padding: 10px 15px;
   border-radius: 5px;
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   margin-left: 10px;
+  white-space: nowrap; /* Prevent buttons from wrapping */
 }
 
 .navbar-buttons .login-btn {
@@ -65,6 +79,7 @@
 .navbar-menu {
   display: flex;
   justify-content: flex-end;
+  flex-grow: 1; /* Allow menu to take available space */
 }
 
 .menu-list {
@@ -81,6 +96,7 @@
   font-size: 16px;
   font-weight: 500;
   transition: color 0.3s ease;
+  white-space: nowrap; /* Prevent menu items from wrapping */
 }
 
 .menu-item:hover {
@@ -90,4 +106,33 @@
 .menu-item.active {
   color: #ff6a00;
   font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none; /* Hide menu on small screens, typically replaced by a hamburger icon */
+  }
+
+  .navbar-buttons {
+    margin-left: auto; /* Push buttons to the right */
+  }
+
+  .navbar-buttons .btn {
+    padding: 8px 12px; /* Smaller padding for buttons */
+    font-size: 13px;
+  }
+
+  .navbar-logo .logo {
+    height: 40px; /* Smaller logo on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 8px 15px; /* Reduce padding further */
+  }
+  .navbar-buttons .btn {
+    margin-left: 5px; /* Reduce space between buttons */
+  }
 }
