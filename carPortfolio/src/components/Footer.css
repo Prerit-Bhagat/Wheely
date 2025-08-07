@@ -1,0 +1,116 @@
+/* Global box-sizing for consistency */
+.footer-container * {
+  box-sizing: border-box;
+}
+
+/* Footer container styling */
+.footer-container {
+  background-color: #2c3e50; /* Dark background */
+  color: #ecf0f1; /* Light text color */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px 20px 20px; /* Top, horizontal, bottom padding */
+  margin-top: 50px; /* Space above the footer */
+}
+
+/* Content section with columns */
+.footer-content {
+  display: flex;
+  flex-wrap: wrap; /* Allow sections to wrap */
+  justify-content: space-around; /* Distribute space */
+  max-width: 1200px;
+  margin: 0 auto 30px; /* Center content and add bottom margin */
+  gap: 30px; /* Space between sections */
+}
+
+.footer-section {
+  flex: 1; /* Allow sections to grow */
+  min-width: 250px; /* Minimum width for each section */
+  padding: 10px;
+}
+
+.footer-section h3 {
+  font-size: 1.4rem;
+  color: #ff6a00; /* Accent color for headings */
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #ff6a00; /* Accent color on hover */
+  text-decoration: underline;
+}
+
+/* Bottom copyright section */
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+}
+
+.footer-bottom p {
+  font-size: 0.85rem;
+  color: #bdc3c7; /* Lighter grey for copyright */
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center;
+    text-align: center;
+  }
+  .footer-section {
+    min-width: unset; /* Remove min-width */
+    width: 100%; /* Take full width */
+    max-width: 400px; /* Limit max width for stacked sections */
+  }
+  .footer-section ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .footer-section ul li {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 30px 15px 15px;
+  }
+  .footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  .footer-section p,
+  .footer-section ul li a {
+    font-size: 0.9rem;
+  }
+  .footer-bottom p {
+    font-size: 0.8rem;
+  }
+}

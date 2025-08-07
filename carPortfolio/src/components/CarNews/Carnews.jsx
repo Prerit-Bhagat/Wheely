@@ -59,8 +59,11 @@ const CarNews = () => {
   const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
-    const apiKey = "7f69bc049b5a44e7ad9b6accdf6ea350"; // Replace with your NewsAPI key
-    const apiUrl = `https://newsapi.org/v2/everything?q=cars&sortBy=publishedAt&pageSize=10&apiKey=${apiKey}`;
+    // const apiKey = "7f69bc049b5a44e7ad9b6accdf6ea350"; // Replace with your NewsAPI key
+    // const apiUrl = `https://newsapi.org/v2/everything?q=cars&sortBy=publishedAt&pageSize=10&apiKey=${apiKey}`;
+
+    const apiKey = "c104c29a70a24519b2648120530502f3";
+    const apiUrl = `https://newsapi.org/v2/everything?q=tesla&from=2025-07-07&sortBy=publishedAt&apiKey=${apiKey}`;
 
     setLoading(true); // Set loading to true before fetch
     fetch(apiUrl)
