@@ -2,14 +2,21 @@ from flask import Flask, render_template, request, flash , jsonify
 import joblib
 import pandas as pd
 from flask_cors import CORS
-
+import gdown
+import os
 # Initialize Flask app
 app = Flask(__name__, static_url_path='/static')
 CORS(app, origins=["*"], supports_credentials=True)
 app.config["SECRET_KEY"] = "secret_key"
 
+model_path = "Pipeline.joblib"
+if not os.path.exists(model_path):
+    gdown.download("https://drive.google.com/uc?id=FILE_ID", model_path, quiet=False)
+
+pipeline_model = joblib.load(model_path)
+
 # Load the model pipeline
-pipeline_model = joblib.load("Pipeline.joblib")
+# pipeline_model = joblib.load("Pipeline.joblib")
 
 
 @app.route('/', methods=['GET', 'POST'])

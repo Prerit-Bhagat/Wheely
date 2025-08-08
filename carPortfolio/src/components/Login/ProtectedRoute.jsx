@@ -1,3 +1,16 @@
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext.jsx";
+
+const ProtectedRoute = ({ children }) => {
+  const { isLoggedIn } = useAuth();
+
+  if (isLoggedIn === null) return <p>Loading...</p>;
+  return isLoggedIn ? children : <Navigate to="/login" />;
+};
+
+export default ProtectedRoute;
+
 // import React, { useEffect, useState } from "react";
 // import axios from "axios";
 // import { Navigate } from "react-router-dom";
@@ -25,15 +38,3 @@
 // };
 
 // export default ProtectedRoute;
-import React from "react";
-import { Navigate } from "react-router-dom";
-import { useAuth } from "@/context/AuthContext.jsx";
-
-const ProtectedRoute = ({ children }) => {
-  const { isLoggedIn } = useAuth();
-
-  if (isLoggedIn === null) return <p>Loading...</p>;
-  return isLoggedIn ? children : <Navigate to="/login" />;
-};
-
-export default ProtectedRoute;
