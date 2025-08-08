@@ -3,5 +3,6 @@ flask-cors
 pandas
 joblib
 gdown
-scikit-learn
+scikit-learn==1.5.2
+numpy
 scipy
