@@ -11,7 +11,10 @@ app.config["SECRET_KEY"] = "secret_key"
 
 model_path = "Pipeline.joblib"
 if not os.path.exists(model_path):
-    gdown.download("https://drive.google.com/uc?id=FILE_ID", model_path, quiet=False)
+    # Use the file ID from your URL
+    file_id = "17Xv-IBvojcwWz6Dt9PVwHBmlEDMqWpsr"
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, model_path, quiet=False)
 
 pipeline_model = joblib.load(model_path)
 
