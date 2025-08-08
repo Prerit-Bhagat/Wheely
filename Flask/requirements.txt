@@ -3,4 +3,5 @@ flask-cors
 pandas
 joblib
 gdown
-sklearn
+scikit-learn
+scipy
